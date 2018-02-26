@@ -250,6 +250,16 @@ func (tn *File) ShowId() {
 	fmt.Printf("当前文件ID是: %d\n", tn.fd)
 }
 
+func (p *struct1) ShowId() {
+	fmt.Println("当前结构体str属性的值是: ", p.str)
+}
+
+// 接口的概念,定义接口.
+// 接口的本质有两点. 1. 接口是方法的集合. 2.接口也是一种数据类型.
+type 接口 interface {
+	ShowId() // 上面有两个结构实现了这个方法, 一个是struct1 一个是File. 这就是多态.
+}
+
 // 特殊函数,主程序的入口,是整个程序,而不是特指这个包文件.
 func main() {
 
@@ -496,4 +506,12 @@ func main() {
 	// 2. 方法在变量上被调用
 	f2 := NewFile(10, "./test.txt")
 	f2.ShowId()
+	// 接口的使用方法. 上面定义了一个叫 接口 的接口.现在我们来实现它.
+	var 接口的实例1 接口
+	接口的实例1 = ms
+	var 接口的实例2 接口
+	接口的实例2 = f2
+	fmt.Println("同一个接口,两个方法实现.")
+	接口的实例1.ShowId()
+	接口的实例2.ShowId()
 }
